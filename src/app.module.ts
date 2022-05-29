@@ -3,8 +3,7 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { OwnersModule } from './owners/owners.module';
-import { CatsModule } from './cats/cats.module';
+import { AuthorModule } from './author/author.module';
 
 @Module({
   imports: [
@@ -15,8 +14,7 @@ import { CatsModule } from './cats/cats.module';
       typePaths: ['./**/*.graphql'],
       installSubscriptionHandlers: true,
     }),
-    OwnersModule,
-    CatsModule,
+    AuthorModule,
   ],
   controllers: [AppController],
   providers: [AppService],

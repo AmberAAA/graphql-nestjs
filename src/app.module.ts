@@ -26,6 +26,7 @@ import { WordModule } from './word/word.module';
       database: 'lova_words_test',
       entities: [Word, WineCet4Word],
       synchronize: true,
+      debug: true,
     }),
     AuthorModule,
     WordModule,

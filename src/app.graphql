@@ -1,35 +1,9 @@
-type Author {
-    id: Int!,
-    name: String!
-    description: String
-}
-
-type Book {
-    id: Int!,
-    name: String!,
-    authorId: Int!
-}
-
-type Query {
-    authors: [Author!]!
-    books: [Book!]!,
-    author(id: Int!): Author,
-    book: Book
-}
-
-input AddAuthorCommand {
-    name: String!
-    description: String
-}
-
-input ModfyAuthorCommand {
-    id: Int!,
-    name: String!
-    description: String
-}
-
-type Mutation {
-    addAuthor(cmd: AddAuthorCommand!): Author!
-    modfyAuthor(cmd: ModfyAuthorCommand!): Author!
-    deleteAuthor(id: Int!): Boolean!
+type word {
+  id: Int!
+  word: String!
+  phonetic: String!
+  translation: String
+  phrase: String
+  samples: String
+  source: Int
 }

@@ -11,13 +11,7 @@ export class WordService {
     private wordRespository: Repository<Word>,
     @InjectRepository(WineCet4Word)
     private cet4Respository: Repository<WineCet4Word>,
-  ) {
-    this.cet4Respository.find().then((res) => {
-      res.forEach((cet) => {
-        wordRespository.save(Word.buildWithCet4(cet));
-      });
-    });
-  }
+  ) {}
 
   public findOne(id: number): Promise<Word> {
     return this.wordRespository.findOne(id);

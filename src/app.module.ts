@@ -24,7 +24,7 @@ import { ConfigModule } from '@nestjs/config';
       port: 3306,
       username: process.env.MYSQL_USER,
       password: process.env.MYSQL_PASSWORD,
-      database: 'lova_words_test',
+      database: process.env.MYSQL_DATABASE,
       entities: [Word, WineCet4Word],
       synchronize: true,
     }),

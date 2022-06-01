@@ -3,7 +3,7 @@ import { Args, Resolver, Query } from '@nestjs/graphql';
 import { Word } from 'src/graphql.schema';
 import { WordService } from './word.service';
 
-@Resolver('Word')
+@Resolver()
 export class WordResolver {
   constructor(private wordService: WordService) {}
 

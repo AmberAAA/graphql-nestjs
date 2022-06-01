@@ -5,9 +5,9 @@ import { WordService } from './word.service';
 export class WordController {
   constructor(private service: WordService) {}
 
-  @Get('')
-  async test() {
-    return this.service.findOne(1);
+  @Get('/w/:id')
+  async test(@Param('id') id: number) {
+    return this.service.findOne(id);
   }
 
   @Get('cet4/:id')

@@ -1,9 +1,13 @@
-type word {
+type Word {
   id: Int!
   word: String!
   phonetic: String!
-  translation: String
+  translate: String
   phrase: String
   samples: String
   source: Int
+}
+
+type Query {
+  word(id: Int!): Word
 }

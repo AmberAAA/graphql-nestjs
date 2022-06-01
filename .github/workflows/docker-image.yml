@@ -3,10 +3,10 @@ name: Docker Image CI
 on:
   push:
     branches: [ master ]
+    tags:
+      - v*
   pull_request:
     branches: [ master ]
-  tags:
-    - v*
 
 env:
   - name: IMAGE_NAME

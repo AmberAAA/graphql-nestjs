@@ -16,10 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      - name: IMAGE_NAME
-        value: graphsql-nest
-      - name: IMAGE_VERSION
-        value: $(date +%s)
+      IMAGE_NAME: graphsql-nest
 
     steps:
       - uses: actions/checkout@v3

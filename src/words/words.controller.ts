@@ -27,7 +27,6 @@ export class WordsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    console.log(`id: ${id}`);
     return this.wordsService.findOne(+id);
   }
 

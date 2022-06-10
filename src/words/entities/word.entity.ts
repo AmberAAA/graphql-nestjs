@@ -18,9 +18,9 @@ export class Word {
   @Column({
     type: 'varchar',
     length: 255,
-    nullable: false,
+    nullable: true,
   })
-  phonetic: true;
+  phonetic: string;
 
   @Column({
     type: 'text',

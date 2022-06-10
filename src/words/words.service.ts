@@ -11,23 +11,28 @@ export class WordsService {
     @InjectRepository(Word) private readonly wordsRepository: Repository<Word>,
   ) {}
   create(createWordDto: CreateWordDto) {
-    return 'This action adds a new word';
+    return this.wordsRepository.save(createWordDto);
   }
 
-  findAll() {
-    return `This action returns all words`;
+  async findAll() {
+    const users = await this.wordsRepository.find();
+    return users;
   }
 
-  findOne(id: number) {
-    console.log('12312321');
-    return this.wordsRepository.findOne(id);
+  async findOne(id: number) {
+    const user = await this.wordsRepository.findOne(id);
+    return user;
   }
 
   update(id: number, updateWordDto: UpdateWordDto) {
-    return `This action updates a #${id} word`;
+    return this.wordsRepository.update({ id }, updateWordDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} word`;
+  async remove(id: number) {
+    const word = await this.wordsRepository.findOne(id);
+    if (word) {
+      this.wordsRepository.remove(word);
+    }
+    return word;
   }
 }

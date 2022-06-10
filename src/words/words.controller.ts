@@ -22,8 +22,7 @@ export class WordsController {
 
   @Get()
   findAll() {
-    console.log('asd');
-    // return this.wordsService.findAll();
+    return this.wordsService.findAll();
   }
 
   @Get(':id')

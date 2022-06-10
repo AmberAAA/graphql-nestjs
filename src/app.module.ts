@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { WordsModule } from './words/words.module';
 import { Word } from './words/entities/word.entity';
+import { ShareModule } from './share/share.module';
 
 @Module({
   imports: [
@@ -17,10 +18,10 @@ import { Word } from './words/entities/word.entity';
       password: process.env.MYSQL_PASSWORD,
       database: process.env.MYSQL_DATABASE,
       synchronize: true,
-      logging: 'all',
       entities: [Word],
     }),
     WordsModule,
+    ShareModule,
   ],
   controllers: [AppController],
   providers: [AppService],

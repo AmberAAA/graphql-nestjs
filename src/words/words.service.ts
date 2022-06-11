@@ -14,7 +14,7 @@ export class WordsService {
     @InjectRepository(Word) private readonly wordsRepository: Repository<Word>,
     @Inject('BROWSER_DRIVER') private readonly browser: BrowserDriveService,
   ) {}
-  async create(createWordDto: CreateWordDto) {
+  async create(createWordDto: CreateWordDto): Promise<Word> {
     createWordDto.source = WordType.NEW;
     const word = await this.wordsRepository.save(createWordDto);
     const url = `http://www.iciba.com/word?w=${word.word}`;
@@ -34,21 +34,22 @@ export class WordsService {
     return word;
   }
 
-  async findAll() {
+  async findAll(): Promise<Word[]> {
     const users = await this.wordsRepository.find();
     return users;
   }
 
-  async findOne(id: number) {
+  async findOne(id: number): Promise<Word> {
     const user = await this.wordsRepository.findOne(id);
     return user;
   }
 
-  update(id: number, updateWordDto: UpdateWordDto) {
-    return this.wordsRepository.update({ id }, updateWordDto);
+  async update(id: number, updateWordDto: UpdateWordDto): Promise<boolean> {
+    const a = await this.wordsRepository.update({ id }, updateWordDto);
+    return !!a.affected;
   }
 
-  async remove(id: number) {
+  async remove(id: number): Promise<Word> {
     const word = await this.wordsRepository.findOne(id);
     if (word) {
       this.wordsRepository.remove(word);

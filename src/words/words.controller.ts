@@ -10,7 +10,9 @@ import {
 import { WordsService } from './words.service';
 import { CreateWordDto } from './dto/create-word.dto';
 import { UpdateWordDto } from './dto/update-word.dto';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('words')
 @Controller('words')
 export class WordsController {
   constructor(private readonly wordsService: WordsService) {}

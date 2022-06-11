@@ -21,6 +21,8 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@alicloud/openapi-client": "^0.4.1",
+    "@alicloud/oss20190517": "^1.0.3",
     "@nestjs/apollo": "^10.0.12",
     "@nestjs/common": "^8.0.0",
     "@nestjs/config": "^2.0.1",

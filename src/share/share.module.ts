@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { BrowserDriveService } from './browser-drive.service';
+import { OssService } from './oss.service';
 
 @Module({
   providers: [
@@ -11,7 +12,8 @@ import { BrowserDriveService } from './browser-drive.service';
         return browserDrive;
       },
     },
+    OssService,
   ],
-  exports: ['BROWSER_DRIVER'],
+  exports: ['BROWSER_DRIVER', OssService],
 })
 export class ShareModule {}

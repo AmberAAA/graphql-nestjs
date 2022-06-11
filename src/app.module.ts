@@ -9,7 +9,9 @@ import { ShareModule } from './share/share.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      envFilePath: ['.env.local', '.env'],
+    }),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',

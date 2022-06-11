@@ -2,6 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { concatAll, filter, from, map, take } from 'rxjs';
 import { BrowserDriveService } from 'src/share/browser-drive.service';
+import { OssService } from 'src/share/oss.service';
 import { Repository } from 'typeorm';
 import { CreateWordDto } from './dto/create-word.dto';
 import { UpdateWordDto } from './dto/update-word.dto';
@@ -13,11 +14,16 @@ export class WordsService {
   constructor(
     @InjectRepository(Word) private readonly wordsRepository: Repository<Word>,
     @Inject('BROWSER_DRIVER') private readonly browser: BrowserDriveService,
+    private readonly oss: OssService,
   ) {}
   async create(createWordDto: CreateWordDto): Promise<Word> {
     createWordDto.source = WordType.NEW;
     const word = await this.wordsRepository.save(createWordDto);
     const url = `http://www.iciba.com/word?w=${word.word}`;
+
+    this.oss.listBuck().subscribe((e) => {
+      console.log(e);
+    });
 
     this.browser
       .handlePage(url)

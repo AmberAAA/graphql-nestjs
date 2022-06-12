@@ -1,4 +1,4 @@
-FROM node:16-alpine3.15
+FROM node:16-slim
 WORKDIR /app
 COPY . /app
 RUN apt-get update \

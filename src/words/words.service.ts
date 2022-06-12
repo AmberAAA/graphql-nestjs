@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { concatAll, filter, from, map, take } from 'rxjs';
+import { concatAll, filter, map, take } from 'rxjs';
 import { BrowserDriveService } from 'src/share/browser-drive.service';
 import { OssService } from 'src/share/oss.service';
 import { Repository } from 'typeorm';
@@ -24,13 +24,13 @@ export class WordsService {
     this.browser
       .handlePage(url)
       .pipe(
-        filter((response) => response.url() === url),
-        take(1),
-        map((response) => response.text()),
-        concatAll(),
+        filter((response) => response.data.url() === url),
+        // map((response) => response.data.text()),
+        // concatAll(),
       )
       .subscribe((e) => {
-        console.log(e);
+        if (e.data.url() === url) {
+        }
       });
 
     return word;

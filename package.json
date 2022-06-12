@@ -21,8 +21,6 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@alicloud/openapi-client": "^0.4.1",
-    "@alicloud/oss20190517": "^1.0.3",
     "@nestjs/apollo": "^10.0.12",
     "@nestjs/common": "^8.0.0",
     "@nestjs/config": "^2.0.1",
@@ -31,6 +29,8 @@
     "@nestjs/platform-express": "^8.0.0",
     "@nestjs/swagger": "^5.2.1",
     "@nestjs/typeorm": "^8.0.4",
+    "@types/ali-oss": "^6.16.4",
+    "ali-oss": "^6.17.1",
     "mysql2": "^2.3.3",
     "puppeteer": "^14.3.0",
     "reflect-metadata": "^0.1.13",

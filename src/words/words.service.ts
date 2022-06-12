@@ -21,10 +21,6 @@ export class WordsService {
     const word = await this.wordsRepository.save(createWordDto);
     const url = `http://www.iciba.com/word?w=${word.word}`;
 
-    this.oss.listBuck().subscribe((e) => {
-      console.log(e);
-    });
-
     this.browser
       .handlePage(url)
       .pipe(

@@ -1,27 +1,27 @@
 import { Injectable } from '@nestjs/common';
 
-import Oss, * as $oss from '@alicloud/oss20190517';
-import * as $OpenApi from '@alicloud/openapi-client';
-import { from, map } from 'rxjs';
+import * as OSS from 'ali-oss';
+import { from } from 'rxjs';
 
 @Injectable()
 export class OssService {
-  public readonly client: Oss;
+  public readonly client: OSS;
 
   constructor() {
-    const config = new $OpenApi.Config({
+    this.client = new OSS({
       accessKeyId: process.env.ALI_ACCESS_KEY_ID,
       accessKeySecret: process.env.ALI_ACCESS_KEY_SECRET,
-      regionId: 'cn-hangzhou',
+      region: 'cn-hangzhou',
       endpoint: 'oss-cn-hangzhou.aliyuncs.com',
+      bucket: 'private-abr',
     });
-    this.client = new Oss(config);
   }
 
   listBuck() {
-    const r = new $oss.ListBucketsRequest();
-    return from(this.client.listBuckets(r)).pipe(
-      map((item) => item.body.buckets),
-    );
+    return from(this.client.listBuckets({}));
+  }
+
+  sign(path: string) {
+    return this.client.signatureUrl(path);
   }
 }

@@ -1,6 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { concatAll, filter, map, take } from 'rxjs';
 import { BrowserDriveService } from 'src/share/browser-drive.service';
 import { OssService } from 'src/share/oss.service';
 import { Repository } from 'typeorm';
@@ -19,20 +18,7 @@ export class WordsService {
   async create(createWordDto: CreateWordDto): Promise<Word> {
     createWordDto.source = WordType.NEW;
     const word = await this.wordsRepository.save(createWordDto);
-    const url = `http://www.iciba.com/word?w=${word.word}`;
-
-    this.browser
-      .handlePage(url)
-      .pipe(
-        filter((response) => response.data.url() === url),
-        // map((response) => response.data.text()),
-        // concatAll(),
-      )
-      .subscribe((e) => {
-        if (e.data.url() === url) {
-        }
-      });
-
+    this.spiderWord(word);
     return word;
   }
 
@@ -57,5 +43,14 @@ export class WordsService {
       this.wordsRepository.remove(word);
     }
     return word;
+  }
+
+  async spiderWord(word: Word): Promise<void> {
+    const url = `http://www.iciba.com/word?w=${word.word}`;
+
+    const page = await this.browser.getPage();
+    page.goto(url);
+
+    console.log(url);
   }
 }

@@ -8,6 +8,8 @@ import { Word } from './words/entities/word.entity';
 import { ShareModule } from './share/share.module';
 import { ImgsModule } from './imgs/imgs.module';
 import { Img } from './imgs/entities/img.entity';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -27,6 +29,9 @@ import { Img } from './imgs/entities/img.entity';
     WordsModule,
     ShareModule,
     ImgsModule,
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'static'),
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],

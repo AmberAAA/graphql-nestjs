@@ -9,5 +9,5 @@ RUN apt-get update \
     && apt-get install -y fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-freefont-ttf libxss1 \
       --no-install-recommends \
     && rm -rf /var/lib/apt/lists/* \
-    && npm ci
+    && npm i
 CMD npm run start

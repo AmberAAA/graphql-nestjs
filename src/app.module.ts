@@ -6,6 +6,8 @@ import { ConfigModule } from '@nestjs/config';
 import { WordsModule } from './words/words.module';
 import { Word } from './words/entities/word.entity';
 import { ShareModule } from './share/share.module';
+import { ImgsModule } from './imgs/imgs.module';
+import { Img } from './imgs/entities/img.entity';
 
 @Module({
   imports: [
@@ -19,11 +21,12 @@ import { ShareModule } from './share/share.module';
       username: process.env.MYSQL_USER,
       password: process.env.MYSQL_PASSWORD,
       database: process.env.MYSQL_DATABASE,
-      synchronize: true,
-      entities: [Word],
+      synchronize: false,
+      entities: [Word, Img],
     }),
     WordsModule,
     ShareModule,
+    ImgsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

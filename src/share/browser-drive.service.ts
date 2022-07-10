@@ -13,7 +13,7 @@ export class BrowserDriveService {
 
   async init() {
     this.browserDrive = await puppeteer.launch({
-      headless: true,
+      headless: false,
       args: ['--no-sandbox'],
     });
   }

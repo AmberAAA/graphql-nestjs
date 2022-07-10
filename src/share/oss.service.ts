@@ -18,7 +18,7 @@ export class OssService {
   }
 
   listBuck() {
-    return from(this.client.listBuckets({}));
+    return this.client.listBuckets({});
   }
 
   sign(path: string) {

@@ -1,7 +1,5 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { WordsModule } from './words/words.module';
 import { Word } from './words/entities/word.entity';
@@ -33,7 +31,5 @@ import { join } from 'path';
       rootPath: join(__dirname, '..', 'static'),
     }),
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}

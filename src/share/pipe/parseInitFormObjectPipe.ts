@@ -3,7 +3,7 @@ import { Injectable, PipeTransform } from '@nestjs/common';
 @Injectable()
 export class ParseInitFromAnyPipe implements PipeTransform {
   transform(value: any) {
-    if (typeof value === 'string') {
+    if (typeof value === 'string' && !isNaN(parseInt(value))) {
       return parseInt(value);
     }
     if (typeof value === 'object') {

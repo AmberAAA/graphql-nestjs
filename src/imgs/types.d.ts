@@ -5,5 +5,6 @@ export class GetTagPageCmd extends PageQuery {
 }
 
 export class GetImgPageCmd extends PageQuery {
+  name?: string;
   tag?: number;
 }

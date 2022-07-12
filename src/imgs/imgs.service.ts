@@ -35,6 +35,7 @@ export class ImgsService {
       take: query.size,
       where: {
         id: ids.length ? In(ids) : Not(IsNull()),
+        name: query.name ? Like('%' + query.name + '%') : Not(IsNull()),
       },
     });
     return {
@@ -44,10 +45,7 @@ export class ImgsService {
     };
   }
 
-  async getTagPage({
-    name = undefined,
-    ...queryPage
-  }: GetTagPageCmd): Promise<Page<Tag>> {
+  async getTagPage({ name, ...queryPage }: GetTagPageCmd): Promise<Page<Tag>> {
     const [data, total] = await this.tagRepository.findAndCount({
       skip: (queryPage.page - 1) * +queryPage.size,
       take: +queryPage.size,

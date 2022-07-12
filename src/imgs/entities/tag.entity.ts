@@ -1,11 +1,15 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({
-  name: 'tag',
+  name: 'tag_view',
 })
 export class Tag {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({
+    name: 'tag_id',
+  })
   id: number;
-  @Column()
+  @Column({
+    name: 'tag_name',
+  })
   tag: string;
 }

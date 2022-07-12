@@ -9,7 +9,7 @@ export class ImgMeta {
 })
 export class Img {
   @PrimaryGeneratedColumn()
-  id: string;
+  id: number;
 
   @Column()
   name: string;

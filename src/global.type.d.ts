@@ -1,9 +1,9 @@
-export interface IPageQuery {
+export class PageQuery {
   page: number;
   size: number;
 }
 
-export interface IPage<T> extends IPageQuery {
+export class Page<T> extends PageQuery {
   total: number;
   data: T[];
 }

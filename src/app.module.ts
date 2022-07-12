@@ -9,6 +9,7 @@ import { Img } from './imgs/entities/img.entity';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { Tag } from './imgs/entities/tag.entity';
+import { ImgTag } from './imgs/entities/imgTag.entity';
 
 @Module({
   imports: [
@@ -24,7 +25,7 @@ import { Tag } from './imgs/entities/tag.entity';
       database: process.env.MYSQL_DATABASE,
       synchronize: false,
       debug: true,
-      entities: [Word, Img, Tag],
+      entities: [Word, Img, Tag, ImgTag],
     }),
     WordsModule,
     ShareModule,

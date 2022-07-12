@@ -1,5 +1,9 @@
-import type { IPageQuery } from 'src/global.type';
+import type { PageQuery } from 'src/global.type';
 
-export interface IGetTagPageCmd extends IPageQuery {
+export class GetTagPageCmd extends PageQuery {
   name?: string;
+}
+
+export class GetImgPageCmd extends PageQuery {
+  tag?: number;
 }

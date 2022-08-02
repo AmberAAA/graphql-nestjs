@@ -10,6 +10,8 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { Tag } from './imgs/entities/tag.entity';
 import { ImgTag } from './imgs/entities/imgTag.entity';
+import { UsersModule } from './users/users.module';
+import { User } from './users/entities/user.entity';
 
 @Module({
   imports: [
@@ -23,9 +25,9 @@ import { ImgTag } from './imgs/entities/imgTag.entity';
       username: process.env.MYSQL_USER,
       password: process.env.MYSQL_PASSWORD,
       database: process.env.MYSQL_DATABASE,
-      synchronize: false,
+      synchronize: true,
       debug: true,
-      entities: [Word, Img, Tag, ImgTag],
+      entities: [Word, Img, Tag, ImgTag, User],
     }),
     WordsModule,
     ShareModule,
@@ -33,6 +35,7 @@ import { ImgTag } from './imgs/entities/imgTag.entity';
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'static'),
     }),
+    UsersModule,
   ],
 })
 export class AppModule {}

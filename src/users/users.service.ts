@@ -12,24 +12,40 @@ export class UsersService {
   constructor(
     @InjectRepository(User) private readonly userRepository: Repository<User>,
   ) {}
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+  async create(createUserDto: CreateUserDto) {
+    const user = await this.userRepository.save(createUserDto);
+    console.log(user);
+    return user;
   }
 
   findAll() {
     return `This action returns all users`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOne(id: number) {
+    return await this.userRepository.findOne(id);
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async update(id: number, updateUserDto: UpdateUserDto) {
+    await this.userRepository
+      .createQueryBuilder()
+      .where({
+        id,
+      })
+      .update(updateUserDto)
+      .execute();
+    const user = await this.findOne(id);
+    return user;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  async remove(id: number) {
+    const user = await this.userRepository.find({ id });
+    if (user.length) {
+      await this.userRepository.remove(user);
+      return user[0];
+    } else {
+      return null;
+    }
   }
 
   async findByPage(query: PageQuery): Promise<Page<User>> {

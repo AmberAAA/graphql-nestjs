@@ -1,4 +1,4 @@
-import { ApiParam, ApiProperty, ApiQuery } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class PageQuery {
   @ApiProperty({

@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 
 import * as OSS from 'ali-oss';
-import { from } from 'rxjs';
 
 @Injectable()
 export class OssService {

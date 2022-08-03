@@ -14,6 +14,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { PageQuery } from 'src/global.type';
+import { ParseInitFromAnyPipe } from 'src/share/pipe/parseInitFormObjectPipe';
 
 @Controller('users')
 @ApiTags('users')
@@ -21,7 +22,7 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Get('/page')
-  findAllByPage(@Query() query: PageQuery) {
+  findAllByPage(@Query(ParseInitFromAnyPipe) query: PageQuery) {
     return this.usersService.findByPage(query);
   }
 

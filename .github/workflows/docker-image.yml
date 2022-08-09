@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      IMAGE_NAME: graphsql-nest
+      IMAGE_NAME: love-code
 
     steps:
       - uses: actions/checkout@v3

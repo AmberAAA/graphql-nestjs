@@ -28,7 +28,7 @@ export class WordsService {
   }
 
   async findOne(id: number): Promise<Word> {
-    const user = await this.wordsRepository.findOne(id);
+    const user = await this.wordsRepository.findOneBy({ id });
     return user;
   }
 
@@ -38,7 +38,7 @@ export class WordsService {
   }
 
   async remove(id: number): Promise<Word> {
-    const word = await this.wordsRepository.findOne(id);
+    const word = await this.wordsRepository.findOneBy({ id });
     if (word) {
       this.wordsRepository.remove(word);
     }

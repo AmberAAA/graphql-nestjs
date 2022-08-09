@@ -17,7 +17,7 @@ export class ImgsService {
   ) {}
 
   findOne(id: number) {
-    return this.imgRepository.findOne(id);
+    return this.imgRepository.findOneBy({ id });
   }
 
   async findByPage(query: GetImgPageCmd): Promise<Page<Img>> {

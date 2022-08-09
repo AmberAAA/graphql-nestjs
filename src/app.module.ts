@@ -12,6 +12,8 @@ import { Tag } from './imgs/entities/tag.entity';
 import { ImgTag } from './imgs/entities/imgTag.entity';
 import { UsersModule } from './users/users.module';
 import { User } from './users/entities/user.entity';
+import { CenterModule } from './center/center.module';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports: [
@@ -26,7 +28,7 @@ import { User } from './users/entities/user.entity';
       password: process.env.MYSQL_PASSWORD,
       database: process.env.MYSQL_DATABASE,
       synchronize: true,
-      debug: true,
+      debug: false,
       entities: [Word, Img, Tag, ImgTag, User],
     }),
     WordsModule,
@@ -36,6 +38,8 @@ import { User } from './users/entities/user.entity';
       rootPath: join(__dirname, '..', 'static'),
     }),
     UsersModule,
+    CenterModule,
+    ScheduleModule.forRoot(),
   ],
 })
 export class AppModule {}

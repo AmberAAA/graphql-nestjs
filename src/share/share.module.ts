@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { BrowserDriveService } from './browser-drive.service';
+import DnsService from './dns.service';
 import { OssService } from './oss.service';
 
 @Module({
@@ -13,6 +14,7 @@ import { OssService } from './oss.service';
       },
     },
     OssService,
+    DnsService,
   ],
   exports: ['BROWSER_DRIVER', OssService],
 })

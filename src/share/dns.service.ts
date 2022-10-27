@@ -62,7 +62,7 @@ export default class DnsService {
   }
 
   async getMyIp() {
-    const { data: ip } = await axios.get<string>('http://ip.sb', {
+    const { data: ip } = await axios.get<string>('http://4.ipw.cn', {
       headers: {
         'User-Agent': 'curl/7.81.0',
         Accept: '*/*',

@@ -16,9 +16,7 @@ export default class DnsService {
    */
   static createClient(): Alidns20150109 {
     const config = new $OpenApi.Config({
-      // 您的 AccessKey ID
       accessKeyId: process.env.ALI_ACCESS_KEY_ID,
-      // 您的 AccessKey Secret
       accessKeySecret: process.env.ALI_ACCESS_KEY_SECRET,
     });
     // 访问的域名

@@ -20,7 +20,7 @@ export default class DnsService {
       accessKeySecret: process.env.ALI_ACCESS_KEY_SECRET,
     });
     // 访问的域名
-    config.endpoint = `alidns.cn-zhangjiakou.aliyuncs.com`;
+    config.endpoint = process.env.END_POINT;
     return new Alidns20150109(config);
   }
 
@@ -28,7 +28,7 @@ export default class DnsService {
     const client = DnsService.createClient();
     const describeDomainRecordInfoRequest =
       new $Alidns20150109.DescribeDomainRecordInfoRequest({
-        recordId: '699689872921549824',
+        recordId: process.env.RECORD_ID,
       });
     const runtime = new $Util.RuntimeOptions({});
     return await client.describeDomainRecordInfoWithOptions(
@@ -41,7 +41,7 @@ export default class DnsService {
     const client = DnsService.createClient();
     const updateDomainRecordRequest =
       new $Alidns20150109.UpdateDomainRecordRequest({
-        recordId: '699689872921549824',
+        recordId: process.env.RECORD_ID,
         RR: 'srjc',
         type: 'A',
         value,
